@@ -39,14 +39,13 @@ def generateImage(person):
     # Escreve os dados
     draw.text((140, 770), person['name'], font=font_name, fill=(0,0,0))
     draw.text((550, 830), person['type'], font=font_type, fill=(0,0,0))
-    draw.text((150, 830), '{}'.format(person['cpf']), font=font_type, fill=(0,0,0))
+    if (person['type'] != 'Professor'):
+        draw.text((150, 830), '{}'.format(person['cpf']), font=font_type, fill=(0,0,0))
 
     # Processa e salva
     processed = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
     cv2.imwrite('images/{}.png'.format(person['cpf']), processed)
-
-    return '.'
-
+    return
 
 if __name__ == '__main__':
     for i, row in df.iterrows():
