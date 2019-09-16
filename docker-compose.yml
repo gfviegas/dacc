@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  dacc:
+    build: .
+    working_dir: /code
+    command: "python3 writer.py"
+    volumes:
+      - ./:/code
