@@ -1,2 +1,5 @@
-images
+!**/.gitkeep
+images/*
 *.zip
+!**/.gitkeep
+.DS_Store

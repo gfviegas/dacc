@@ -16,6 +16,8 @@ def formatCPF(cpf):
     i = str(cpf).zfill(11)
     return '{}.{}.{}-{}'.format(i[:3], i[3:6], i[6:9], i[-2:])
 
+types_to_print_cpf = ['Alumni', 'Graduando']
+
 # Carregando os dados das inscrições
 df = pd.read_csv('dados.csv', squeeze=True, encoding='utf8')
 df.columns = ['date', 'name', 'cpf', 'type']
@@ -39,7 +41,7 @@ def generateImage(person):
     # Escreve os dados
     draw.text((140, 770), person['name'], font=font_name, fill=(0,0,0))
     draw.text((550, 830), person['type'], font=font_type, fill=(0,0,0))
-    if (person['type'] != 'Professor'):
+    if (person['type'] in types_to_print_cpf):
         draw.text((150, 830), '{}'.format(person['cpf']), font=font_type, fill=(0,0,0))
 
     # Processa e salva
